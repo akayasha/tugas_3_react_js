@@ -5,11 +5,14 @@ class MenuMakanan extends Component {
   constructor(props){
     super(props);
     this.state ={
-      pesan : 0
+      pesan : 0,
+      InputValue : "silahkan pilih pesanan anda"
     };
     this.rubahpesanan = this.rubahpesanan.bind(this)
     this.pesanan = this.pesanan.bind(this);
   }
+
+
 
   rubahpesanan(){
     this.setState((state,props) => {
@@ -20,6 +23,9 @@ class MenuMakanan extends Component {
   }
   pesanan(e){
     console.log(e.target.value);
+    this.setState({InputValue : e.target.value});
+
+
   }
   render() {
     return(
@@ -63,7 +69,7 @@ class MenuMakanan extends Component {
       </table>
       <br/>
       <input type = "text"
-            // value ="masukan pesanan anda"
+            value = {this.state.InputValue}
             onChange ={this.pesanan} />
       <h3> Pesanan Anda : {this.state.pesan} </h3>
 
